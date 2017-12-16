@@ -1,11 +1,15 @@
 package com.example.markodonovski.json;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.markodonovski.json.Models.User;
+import com.google.gson.Gson;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,24 +47,30 @@ public class MainActivity extends AppCompatActivity {
 
 
     @OnClick(R.id.btn1)
-    public void Vnesi (){
+    public void Vnesi() {
         String imeRezultat = text1.getText().toString();
         String prezimeRezultat = text2.getText().toString();
 
         SharedPreferences preferences = getSharedPreferences("MyFiles", MODE_PRIVATE);
-        preferences.edit().putString("Ime", imeRezultat).apply();
-        preferences.edit().putString("Prezime", prezimeRezultat).apply();
+//        preferences.edit().putString("Ime", imeRezultat).apply();
+//        preferences.edit().putString("Prezime", prezimeRezultat).apply();
+        User user = new User(imeRezultat, prezimeRezultat);
+        Gson gson = new Gson();
+        String mapString = gson.toJson(user);
+        preferences.edit().putString("User", mapString).apply();
     }
 
     @OnClick(R.id.btn2)
-    public void Load(){
+    public void Load() {
         SharedPreferences preferences = getSharedPreferences("MyFiles", MODE_PRIVATE);
-        String name = preferences.getString("Ime", "");
-        String lastname = preferences.getString("Prezime", "");
-        text1.setText(name);
-        text2.setText(lastname);
+//        String name = preferences.getString("Ime", "");
+//        String lastname = preferences.getString("Prezime", "");
+        User user1;
+        Gson gson = new Gson();
+        user1 = gson.fromJson(preferences.getString("User", ""), User.class);
+        text1.setText(user1.name);
+        text2.setText(user1.lastname);
 
     }
 
-    public static void addUser
 }
