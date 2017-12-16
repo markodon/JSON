@@ -7,23 +7,53 @@
     tools:context="com.example.markodonovski.json.MainActivity">
 
     <EditText
-        android:id="@+id/etext1"
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Name" />
 
     <EditText
-        android:id="@+id/etext2"
+        android:id="@+id/lastname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Last Name"
-        android:layout_below="@+id/etext1"/>
+        android:layout_below="@+id/name"/>
+    <EditText
+        android:id="@+id/adress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Adress"
+        android:layout_below="@+id/lastname"/>
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:layout_below="@id/adress"/>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:layout_below="@+id/username"/>
+    <EditText
+        android:id="@+id/age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Age"
+        android:layout_below="@+id/password"/>
+    <EditText
+        android:id="@+id/img"
+        android:layout_below="@id/age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/etext2"
+        android:layout_below="@id/img"
         android:text="Go"/>
 
     <Button
@@ -32,5 +62,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btn1"
         android:text="LOAD"/>
+
 
 </RelativeLayout>
